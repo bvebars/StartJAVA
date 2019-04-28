@@ -16,5 +16,6 @@ public class Variable {
         System.out.println("Максимальная частота в разгоне: " + CPUTurboBust + " GHz");
         System.out.println("Поколение: " + generation);
         System.out.println("Еще работает? " + work);
+        
     }
 }
