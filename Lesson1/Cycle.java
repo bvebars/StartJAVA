@@ -9,7 +9,7 @@ public class Cycle {
         int j = 6;
         while ( j >= -6 ) {
             System.out.println(j);
-            ij = j - 2;
+            j = j - 2;
         }
 
         //do-while сумму всех нечетных чисел от [10, 20]
