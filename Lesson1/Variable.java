@@ -1,5 +1,6 @@
 public class Variable {
     public static void main(String[] args) {
+        
         byte RAM = 8;
         short core = 4;
         int flow = 8;
