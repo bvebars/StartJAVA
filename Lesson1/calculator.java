@@ -25,9 +25,9 @@ public class Calculator {
                     a = a * b;
                 }
                 System.out.println(a);
-            } else if (operator == "%") {
+             } else if (operator == "%") {
 
-                int res = b * a / 100;
+                int res = a % b;
                 System.out.println(res + "%");
 
             }
