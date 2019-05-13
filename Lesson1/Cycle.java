@@ -5,9 +5,11 @@ public class Cycle {
         for (int i = 0; i <= 20; i++) {
             System.out.println(i);
         }
+
         //while все числа от [6, -6] (шаг итерации равен 2)
         int j = 6;
-        while ( j >= -6 ) {
+
+        while (j >= -6) {
             System.out.println(j);
             j = j - 2;
         }
@@ -17,11 +19,11 @@ public class Cycle {
         int sum = 0;
 
         do {
-            if (v% 2 == 0 ) {
+            if (v % 2 == 0) {
                 sum += v;
             }
             v++;
-        } while ( v <= 20);
+        } while (v <= 20);
         System.out.println(sum);
     }
 }

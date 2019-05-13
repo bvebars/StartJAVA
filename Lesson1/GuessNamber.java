@@ -1,22 +1,18 @@
 public class GuessNamber {
     public static void main(String[] args) {
+        int randomNumber = 20; // Случайное число компьютера
+        int myNumber = 40; // Мое число
 
-        int randomNumber = 20; // Случайное число компьютера 
-
-        int myNumber = 20; // Мое число
-
-        while (true) {
+        while (myNumber != randomNumber) {
             if (myNumber > randomNumber) {
                 System.out.println("Введенное вами число больше того, что загадал компьютер");
+                myNumber--;
             } else if (myNumber < randomNumber) {
                 System.out.println("Введенное вами число меньше того, что загадал компьютер");
-            }
-            if (myNumber == randomNumber) {
-                System.out.println("Вы угадали!");
-                break;
+                myNumber++;
             }
         }
 
+        System.out.println("Вы угадали!");
     }
-
 }

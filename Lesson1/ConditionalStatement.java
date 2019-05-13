@@ -1,18 +1,17 @@
 public class ConditionalStatement {
     public static void main(String[] args) {
-
         int age = 28;
-        boolean men = true;
+        boolean man = true;
         double growth = 1.70;
-        char startname = 'В';
+        char startName = 'В';
 
         if (age > 20) {
             System.out.println("Тебе больше 20 лет");
         }
-        if (men == true) {
+        if (man == true) {
             System.out.println("Вы мужчина");
         }
-        if (men == false) {
+        if (!man) {
             System.out.println("Вы девушка");
         }
         if (growth > 1.80) {
@@ -20,13 +19,12 @@ public class ConditionalStatement {
         } else {
             System.out.println("Метр с кепкой");
         }
-        if (startname == 'М' ) {
-            System.out.println("Вы наверно Михаил ?");
-        } else if (startname == 'И' ) {
-            System.out.println("Вы наверно Илья ?");
+        if (startName == 'М') {
+            System.out.println("Вы, наверно, Михаил ?");
+        } else if (startName == 'И') {
+            System.out.println("Вы, наверно, Илья ?");
         } else {
             System.out.println("Значит Вячеслав");
         }
-
     }
 }
