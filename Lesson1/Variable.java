@@ -3,7 +3,7 @@ public class Variable {
         byte ram = 8;
         short core = 4;
         int flow = 8;
-        float cpu = 3.20f ;
+        float cpu = 3.20f;
         double cpuTurboBust = 4.46;
         char generation = '7';
         boolean work = true;
