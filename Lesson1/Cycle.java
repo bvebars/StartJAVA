@@ -1,6 +1,5 @@
 public class Cycle {
     public static void main(String[] args) {
-
         //for все числа от [0, 20]
         for (int i = 0; i <= 20; i++) {
             System.out.println(i);
@@ -8,18 +7,16 @@ public class Cycle {
 
         //while все числа от [6, -6] (шаг итерации равен 2)
         int j = 6;
-
         while (j >= -6) {
             System.out.println(j);
-            j = j - 2;
+            j -= 2;
         }
 
         //do-while сумму всех нечетных чисел от [10, 20]
         int v = 10;
         int sum = 0;
-
         do {
-            if (v % 2 == 0) {
+            if (v % 2 == 1) {
                 sum += v;
             }
             v++;

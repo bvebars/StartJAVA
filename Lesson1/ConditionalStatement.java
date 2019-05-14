@@ -8,7 +8,7 @@ public class ConditionalStatement {
         if (age > 20) {
             System.out.println("Тебе больше 20 лет");
         }
-        if (man == true) {
+        if (man) {
             System.out.println("Вы мужчина");
         }
         if (!man) {
