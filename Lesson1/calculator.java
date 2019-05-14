@@ -4,27 +4,25 @@ public class Calculator {
         int b = 4;  // Число 2
         String operator = "^"; //Оператор
 
-        if (a > 0 || b > 0) {
-            if (operator == "+") {
-                System.out.println(a + b);
-            } else if (operator == "-") {
-                System.out.println(a - b);
-            } else if (operator == "*") {
-                System.out.println(a * b);
-            } else if (operator == "/") {
-                System.out.println(a / b);
-            } else if (operator == "^") {
-                if (a > 0 && b > 0) {
-                    for (int i = 0; i < b - 1; i++) {
-                        a *= b;
-                    }
-                } else {
-                    a = 0;
+        if (operator == "+") {
+            System.out.println(a + b);
+        } else if (operator == "-") {
+            System.out.println(a - b);
+        } else if (operator == "*") {
+            System.out.println(a * b);
+        } else if (operator == "/") {
+            System.out.println(a / b);
+        } else if (operator == "^") {
+            if (a > 0 && b > 0) {
+                for (int i = 0; i < b - 1; i++) {
+                    a *= b;
                 }
-                System.out.println(a);
-            } else if (operator == "%") {
-                System.out.println(a % b + "%");
+            } else {
+                a = 0;
             }
+            System.out.println(a);
+        } else if (operator == "%") {
+            System.out.println(a % b + "%");
         }
     }
 }
