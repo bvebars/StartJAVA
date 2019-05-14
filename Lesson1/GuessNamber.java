@@ -1,4 +1,4 @@
-public class GuessNamber {
+public class GuessNumber {
     public static void main(String[] args) {
         int randomNumber = 20; // Случайное число компьютера
         int myNumber = 40; // Мое число
