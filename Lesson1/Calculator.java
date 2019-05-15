@@ -1,7 +1,7 @@
 public class Calculator {
     public static void main(String[] args) {
-        int a = 4;  // Число 1
-        int b = 4;  // Число 2
+        int a = 100;  // Число 1
+        int b = 0;  // Число 2
         String operator = "^"; //Оператор
 
         if (operator == "+") {
@@ -13,14 +13,19 @@ public class Calculator {
         } else if (operator == "/") {
             System.out.println(a / b);
         } else if (operator == "^") {
-            if (a > 0 && b > 0) {
-                for (int i = 0; i < b - 1; i++) {
-                    a *= b;
+            int res = 1;
+            if (b != 0) {                   // Проверка на ноль,при возведение в 0, число всегда будет равно 1
+                if (b != 1) {               // Сделал проверку просто, что бы не тратить ресурсы на ЦИКЛ
+                    for (int i = 1; i <= b; i++) {
+                        res *= a;
+                    }
+                } else {
+                    res = a;
                 }
             } else {
-                a = 0;
+                res = 1;
             }
-            System.out.println(a);
+            System.out.println(res);
         } else if (operator == "%") {
             System.out.println(a % b + "%");
         }
