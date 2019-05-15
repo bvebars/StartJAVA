@@ -6,12 +6,16 @@ public class Calculator {
 
         if (operator == "+") {
             System.out.println(a + b);
+            
         } else if (operator == "-") {
             System.out.println(a - b);
+            
         } else if (operator == "*") {
             System.out.println(a * b);
+            
         } else if (operator == "/") {
             System.out.println(a / b);
+            
         } else if (operator == "^") {
             int res = 1;
             if (b != 0) {                   // Проверка на ноль,при возведение в 0, число всегда будет равно 1
@@ -26,6 +30,7 @@ public class Calculator {
                 res = 1;
             }
             System.out.println(res);
+            
         } else if (operator == "%") {
             System.out.println(a % b + "%");
         }
