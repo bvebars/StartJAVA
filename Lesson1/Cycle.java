@@ -16,7 +16,7 @@ public class Cycle {
         int v = 10;
         int sum = 0;
         do {
-            if (v % 2 == 1) {
+            if (v % 2 != 0) {
                 sum += v;
             }
             v++;
