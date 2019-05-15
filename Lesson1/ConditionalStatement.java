@@ -21,8 +21,10 @@ public class ConditionalStatement {
         }
         if (startName == 'М') {
             System.out.println("Вы, наверно, Михаил ?");
+
         } else if (startName == 'И') {
             System.out.println("Вы, наверно, Илья ?");
+
         } else {
             System.out.println("Значит Вячеслав");
         }
