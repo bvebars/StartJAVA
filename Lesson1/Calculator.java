@@ -18,7 +18,6 @@ public class Calculator {
                 res *= a;
             }
             System.out.println(res);
-
         } else if (operator == "%") {
             System.out.println(a % b + "%");
         }
