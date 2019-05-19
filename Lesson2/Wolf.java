@@ -1,5 +1,4 @@
 public class Wolf {
-
     private String sex = "women";
     private String nickname = "Stella";
     private int weight = 10;
