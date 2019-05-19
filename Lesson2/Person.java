@@ -1,28 +1,28 @@
 public class Person {
 
-       public String Persom= "Vyacheslav";
-       public String sex = "man";
-       public int growth = 170;
-       public int weight = 70;
-       public int age = 28;
+    public String person = "Vyacheslav";
+    public String sex = "man";
+    public int growth = 170;
+    public int weight = 70;
+    public int age = 28;
 
-        boolean go() {
+    boolean go() {
 
-        }
+    }
 
-        boolean sit() {
+    boolean sit() {
 
-        }
+    }
 
-        boolean run() {
+    boolean run() {
 
-        }
+    }
 
-        boolean say() {
+    boolean say() {
 
-        }
+    }
 
-        boolean teachJava() {
+    boolean teachJava() {
 
     }
 }
