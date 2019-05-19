@@ -1,11 +1,10 @@
 public class Person {
-    public static void main(String[] args) {
 
-        String name = "Vyacheslav";
-        String sex = "men";
-        int growth = 170;
-        int weight = 70;
-        int age = 28;
+       public String Persom= "Vyacheslav";
+       public String sex = "man";
+       public int growth = 170;
+       public int weight = 70;
+       public int age = 28;
 
         boolean go() {
 
@@ -25,6 +24,5 @@ public class Person {
 
         boolean teachJava() {
 
-        }
     }
 }
