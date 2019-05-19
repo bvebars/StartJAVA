@@ -1,12 +1,17 @@
 public class WolfTest {
     public static void main(String[] args) {
         Wolf wolf = new Wolf();
+        wolf.setAge(6);
+        wolf.setColor("black");
+        wolf.setNickname("Beer");
+        wolf.setSex("man");
+        wolf.setWeight(1);
 
-        System.out.println(wolf.nickname);
-        System.out.println(wolf.sex);
-        System.out.println(wolf.age);
-        System.out.println(wolf.weight);
-        System.out.println(wolf.color);
+        System.out.println("Кличка: " + wolf.getNickname());
+        System.out.println("Пол: " + wolf.getSex());
+        System.out.println("Возраст : " + wolf.getAge());
+        System.out.println("Цвет: " + wolf.getColor());
+        System.out.println("Вес: " + wolf.getWeight());
 
         System.out.println("Идти " + wolf.go());
         System.out.println("Бежать " + wolf.run());
