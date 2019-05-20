@@ -7,10 +7,11 @@ public class CalculatorTest {
         boolean game = true;
 
         while (game) {
-            System.out.println("Введите числа:");
-
+            System.out.print("Введите первое число: ");
             int a = scan.nextInt();
+            System.out.print("Введите знак математической операции: ");
             String operator = scan.next();
+            System.out.print("Введите второе число: ");
             int b = scan.nextInt();
 
             switch (operator) {
@@ -31,25 +32,27 @@ public class CalculatorTest {
                     for (int i = 1; i <= b; i++) {
                         res *= a;
                     }
-                    System.out.println("результат: "+ res);
+                    System.out.println("результат: " + res);
                     break;
                 case "%":
                     System.out.println(a % b + "%");
                     break;
             }
-            System.out.println("Хотите продолжить? [да/нет]: ");
+            
+            System.out.println("Хотите продолжить? [да/нет]:");
 
-            String continueGame = scan.next();
-
-            switch (continueGame) {
-                case "да":
+            while (true) {
+                String continueGame = scan.next();
+                if (continueGame.equals("да")) {
                     game = true;
                     break;
-                case "нет":
+                } else if (continueGame.equals("нет")) {
                     game = false;
                     break;
-                default:
+                } else {
                     System.out.println("Введите корректный ответ");
+                    System.out.println("Хотите продолжить? [да/нет]:");
+                }
             }
         }
     }
