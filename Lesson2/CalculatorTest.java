@@ -49,7 +49,7 @@ public class CalculatorTest {
                     game = false;
                     break;
                 default:
-                    System.out.println("Введите корректную строку");
+                    System.out.println("Введите корректный ответ");
             }
         }
     }
