@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
 public class GuessNumber {
-    Player player1;
-    Player player2;
+    boolean str = true;
+
+    private Player player1;
+    private Player player2;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -13,17 +15,14 @@ public class GuessNumber {
 
     public void guessNumber() {
         int randomNumber = (int) (Math.random() * 100);
-        System.out.println(randomNumber);
 
-        while (true) {
+        while (str) {
             System.out.print(player1.getName() + " вводит значение: ");
-           int scan = scanner.nextInt();
+            player1.setNumber(scanner.nextInt());
 
-            if (scan == randomNumber) {
+            if (player1.getNumber() == randomNumber) {
                 System.out.println(player1.getName() + " угадал ");
-                int i = player1.getNumber();
-                i++;
-                player1.setNumber(i);
+                player1.setTotal(player1.getTotal() + 1); //Подсчет общего кол-во побед (Отсебятина)
                 break;
             } else {
                 System.out.println(player1.getName() + " не угадал");
@@ -31,13 +30,11 @@ public class GuessNumber {
             }
 
             System.out.print(player2.getName() + " вводит значение: ");
-            int scan2 = scanner.nextInt();
+            player2.setNumber(scanner.nextInt());
 
-            if (scan2 == randomNumber) {
+            if (player2.getNumber() == randomNumber) {
                 System.out.println(player2.getName() + " угадал");
-                int i = player2.getNumber();
-                i++;
-                player2.setNumber(i);
+                player2.setTotal(player2.getTotal() + 1); //Подсчет общего кол-во побед (Отсебятина)
                 break;
             } else {
                 System.out.println(player2.getName() + " не угадал");
@@ -48,23 +45,14 @@ public class GuessNumber {
 
     public void continueGame() {
         while (true) {
-            System.out.println("Хотите продолжить? [да/нет]:");
-            String continueGame = scanner.next();
-
-            if (continueGame.equals("да")) {
-                guessNumber();
-            } else if (continueGame.equals("нет")) {
-                if (player1.getNumber() > player2.getNumber()) {
-                    System.out.println("Выйграл " + player1.getName() + " со счетом " + player1.getNumber() + " : " + player2.getNumber());
-                } else if (player1.getNumber() < player2.getNumber()) {
-                    System.out.println("Выйграл " + player2.getName() + " со счетом " + player2.getNumber() + " : " + player1.getNumber());
-                } else {
-                    System.out.println("Ничья");
-                }
-                break;
+            if (player1.getNumber() > player2.getNumber()) {
+                System.out.println("Выйграл " + player1.getName() + " со счетом " + player1.getTotal() + " : " + player2.getTotal());
+            } else if (player1.getNumber() < player2.getNumber()) {
+                System.out.println("Выйграл " + player2.getName() + " со счетом " + player2.getTotal() + " : " + player1.getTotal());
             } else {
-                System.out.println("Введите корректный ответ");
+                System.out.println("Ничья");
             }
+            break;
         }
     }
 }

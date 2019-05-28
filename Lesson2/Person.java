@@ -1,10 +1,11 @@
 public class Person {
 
-    public String person = "Vyacheslav";
-    public String sex = "man";
-    public int growth = 170;
-    public int weight = 70;
-    public int age = 28;
+    private String person = "Vyacheslav";
+    private String sex = "man";
+    private int growth = 170;
+    private int weight = 70;
+    private int age = 28;
+    
 
     boolean go() {
 

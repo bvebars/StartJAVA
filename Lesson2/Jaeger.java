@@ -10,6 +10,17 @@ public class Jaeger {
     private int strenght;
     private int armor;
 
+    public Jaeger(String modelName, String mark, String origin, double height, double weight, int speed, int strenght, int armor) {
+        this.modelName = modelName;
+        this.mark = mark;
+        this.origin = origin;
+        this.height = height;
+        this.weight = weight;
+        this.speed = speed;
+        this.strenght = strenght;
+        this.armor = armor;
+    }
+
     boolean drift() {
         return true;
     }

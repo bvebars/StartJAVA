@@ -1,16 +1,7 @@
 //без конструктора
 public class JaegerTest {
     public static void main(String[] args) {
-        Jaeger gipsyAvenger = new Jaeger();
-
-        gipsyAvenger.setModelName("Gipsy Avenger");
-        gipsyAvenger.setMark("ark-6");
-        gipsyAvenger.setOrigin("USA");
-        gipsyAvenger.setHeight(81.7);
-        gipsyAvenger.setWeight(2.0004);
-        gipsyAvenger.setSpeed(3);
-        gipsyAvenger.setStrenght(5);
-        gipsyAvenger.setArmor(6);
+        Jaeger gipsyAvenger = new Jaeger("Gipsy Avenger", "ark-6", "USA", 81.7, 2.0004, 3, 5, 6);
 
         gipsyAvenger.drift();
         gipsyAvenger.move();
@@ -30,16 +21,7 @@ public class JaegerTest {
         System.out.println("useVortexCannon: " + gipsyAvenger.useVortexCannon());
         System.out.println("");
 
-        Jaeger obsidianFury = new Jaeger();
-
-        obsidianFury.setModelName("Obsidian Fury");
-        obsidianFury.setMark("ark-2");
-        obsidianFury.setOrigin("USA");
-        obsidianFury.setHeight(88.7);
-        obsidianFury.setWeight(3.004);
-        obsidianFury.setSpeed(1);
-        obsidianFury.setStrenght(5);
-        obsidianFury.setArmor(8);
+        Jaeger obsidianFury = new Jaeger("Obsidian Fury", "ark-2", "USA", 88.7, 3.004, 1, 5, 8);
 
         obsidianFury.drift();
         obsidianFury.move();
