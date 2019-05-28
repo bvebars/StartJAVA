@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
 public class GuessNumber {
-    boolean str = true;
-
     private Player player1;
     private Player player2;
 
@@ -15,8 +13,9 @@ public class GuessNumber {
 
     public void guessNumber() {
         int randomNumber = (int) (Math.random() * 100);
+        System.out.println(randomNumber); //Случ число
 
-        while (str) {
+        while (true) {
             System.out.print(player1.getName() + " вводит значение: ");
             player1.setNumber(scanner.nextInt());
 
@@ -45,9 +44,9 @@ public class GuessNumber {
 
     public void continueGame() {
         while (true) {
-            if (player1.getNumber() > player2.getNumber()) {
+            if (player1.getTotal() > player2.getTotal()) {
                 System.out.println("Выйграл " + player1.getName() + " со счетом " + player1.getTotal() + " : " + player2.getTotal());
-            } else if (player1.getNumber() < player2.getNumber()) {
+            } else if (player1.getTotal() < player2.getTotal()) {
                 System.out.println("Выйграл " + player2.getName() + " со счетом " + player2.getTotal() + " : " + player1.getTotal());
             } else {
                 System.out.println("Ничья");
