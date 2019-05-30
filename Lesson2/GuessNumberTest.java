@@ -26,7 +26,7 @@ public class GuessNumberTest {
             answer = scanner.nextLine();
             logic = true;
 
-            if (!answer.equals("да")) {
+            if (!answer.equals("да") && !answer.equals("нет")) {
                 System.out.println("Введите правильный ответ ");
                 logic = false;
             }
