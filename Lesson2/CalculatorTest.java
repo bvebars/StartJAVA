@@ -1,11 +1,24 @@
+import java.util.Scanner;
 
-public class GuessNumberTest {
+public class CalculatorTest {
     public static void main(String[] args) {
-        Player player1 = new Player("Первый игрок");
-        Player player2 = new Player("Второй игрок");
+        Scanner scanner = new Scanner(System.in);
+        Calculator calculator = new Calculator(true);
 
-        GuessNumber guessNumberOne = new GuessNumber(player1, player2);
+        while (true) {
+            calculator.calculateNumber();
 
-        guessNumberOne.numberGet();
+            System.out.println("Хотите продолжить? [да/нет]:");
+            String continueGame = scanner.next();
+
+            if (continueGame.equals("да")) {
+                calculator.register = true;
+                calculator.calculateNumber();
+            } else if (continueGame.equals("нет")) {
+                break;
+            } else {
+                System.out.println("Введите корректный ответ");
+            }
+        }
     }
 }

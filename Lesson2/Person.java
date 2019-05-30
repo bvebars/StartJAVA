@@ -2,10 +2,9 @@ public class Person {
 
     private String person = "Vyacheslav";
     private String sex = "man";
-    private int growth = 170;
-    private int weight = 70;
+    private float growth = 170;
+    private float weight = 70;
     private int age = 28;
-    
 
     boolean go() {
 

@@ -1,4 +1,3 @@
-//без конструктора
 public class Jaeger {
 
     private String modelName;
@@ -19,22 +18,6 @@ public class Jaeger {
         this.speed = speed;
         this.strenght = strenght;
         this.armor = armor;
-    }
-
-    boolean drift() {
-        return true;
-    }
-
-    Boolean move() {
-        return true;
-    }
-
-    String scanKaiju() {
-        return "Сканирование";
-    }
-
-    Boolean useVortexCannon() {
-        return true;
     }
 
     public String getModelName() {
@@ -99,5 +82,21 @@ public class Jaeger {
 
     public void setArmor(int armor) {
         this.armor = armor;
+    }
+
+    public boolean drift() {
+        return true;
+    }
+
+    public Boolean move() {
+        return true;
+    }
+
+    public String scanKaiju() {
+        return "Сканирование";
+    }
+
+    public Boolean useVortexCannon() {
+        return true;
     }
 }

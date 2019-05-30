@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
 public class Calculator {
-    boolean game;
+    boolean register;
     private Scanner scan = new Scanner(System.in);
 
-    public Calculator(boolean game) {
-        this.game = game;
+    public Calculator(boolean register) {
+        this.register = register;
     }
 
-    public void valueGet() {
+    public void calculateNumber() {
 
-        while (game) {
+        while (register) {
 
             System.out.print("Введите первое число: ");
             int a = scan.nextInt();
@@ -43,22 +43,7 @@ public class Calculator {
                     System.out.println(a % b + "%");
                     break;
             }
-
-            System.out.println("Хотите продолжить? [да/нет]:");
-
-            while (true) {
-                String continueGame = scan.next();
-                if (continueGame.equals("да")) {
-                    game = true;
-                    break;
-                } else if (continueGame.equals("нет")) {
-                    game = false;
-                    break;
-                } else {
-                    System.out.println("Введите корректный ответ");
-                    System.out.println("Хотите продолжить? [да/нет]:");
-                }
-            }
+            register = false;
         }
     }
 }

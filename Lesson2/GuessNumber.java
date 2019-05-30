@@ -12,7 +12,7 @@ public class GuessNumber {
     }
 
     public void guessNumber() {
-        int randomNumber = (int) (Math.random() * 100);
+        int randomNumber = (int) (Math.random() * 101);
         System.out.println(randomNumber); //Случ число
 
         while (true) {
@@ -42,7 +42,7 @@ public class GuessNumber {
         }
     }
 
-    public void continueGame() {
+    public void definitionVictory() {
         while (true) {
             if (player1.getTotal() > player2.getTotal()) {
                 System.out.println("Выйграл " + player1.getName() + " со счетом " + player1.getTotal() + " : " + player2.getTotal());
