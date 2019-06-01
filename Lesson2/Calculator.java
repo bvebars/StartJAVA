@@ -1,49 +1,65 @@
 import java.util.Scanner;
 
 public class Calculator {
-    boolean register;
-    private Scanner scan = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
-    public Calculator(boolean register) {
-        this.register = register;
+    private int numberOne;
+    private String operator;
+    private int numberTwo;
+
+    public int getNumberOne() {
+        return numberOne;
+    }
+
+    public void setNumberOne(int numberOne) {
+        this.numberOne = numberOne;
+    }
+
+    public int getNumberTwo() {
+        return numberTwo;
+    }
+
+    public void setNumberTwo(int numberTwo) {
+        this.numberTwo = numberTwo;
+    }
+
+    public void setOperator(String operator) {
+        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") &&
+                !operator.equals("/") && !operator.equals("^") && !operator.equals("%")) {
+            System.out.println("Математическая операция не поддерживается");
+            operator = scanner.next();
+        }
+        this.operator = operator;
     }
 
     public void calculateNumber() {
-
-        while (register) {
-
-            System.out.print("Введите первое число: ");
-            int a = scan.nextInt();
-            System.out.print("Введите знак математической операции: ");
-            String operator = scan.next();
-            System.out.print("Введите второе число: ");
-            int b = scan.nextInt();
+        while (true) {
 
             switch (operator) {
                 case "-":
-                    System.out.println(a - b);
+                    System.out.println(getNumberOne() - getNumberTwo());
                     break;
                 case "+":
-                    System.out.println(a + b);
+                    System.out.println(getNumberOne() + getNumberTwo());
                     break;
                 case "*":
-                    System.out.println(a * b);
+                    System.out.println(getNumberOne() * getNumberTwo());
                     break;
                 case "/":
-                    System.out.println(a / b);
+                    System.out.println(getNumberOne() / getNumberTwo());
                     break;
                 case "^":
                     int res = 1;
-                    for (int i = 1; i <= b; i++) {
-                        res *= a;
+                    for (int i = 1; i <= getNumberTwo(); i++) {
+                        res *= getNumberOne();
                     }
                     System.out.println("результат: " + res);
                     break;
                 case "%":
-                    System.out.println(a % b + "%");
+                    System.out.println(getNumberOne() % getNumberTwo() + "%");
                     break;
             }
-            register = false;
+            break;
         }
     }
 }
