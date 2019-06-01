@@ -3,22 +3,32 @@ import java.util.Scanner;
 public class CalculatorTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Calculator calculator = new Calculator(true);
 
-        while (true) {
+        Calculator calculator = new Calculator();
+        String answer;
+
+        do {
+            System.out.print("Введите первое число: ");
+            calculator.setNumberOne(scanner.nextInt());
+
+            System.out.print("Введите оператор: ");
+            calculator.setOperator(scanner.next());
+
+            System.out.print("Введите второе число: ");
+            calculator.setNumberTwo(scanner.nextInt());
+
             calculator.calculateNumber();
-
             System.out.println("Хотите продолжить? [да/нет]:");
-            String continueGame = scanner.next();
 
-            if (continueGame.equals("да")) {
-                calculator.register = true;
-                calculator.calculateNumber();
-            } else if (continueGame.equals("нет")) {
-                break;
-            } else {
-                System.out.println("Введите корректный ответ");
-            }
-        }
+            do {
+                answer = scanner.next();
+                if (!answer.equals("да") && (!answer.equals("нет"))) {
+                    System.out.println("Введите правильный ответ ");
+                } else {
+                    break;
+                }
+            } while (true);
+
+        } while (!answer.equals("нет"));
     }
 }
