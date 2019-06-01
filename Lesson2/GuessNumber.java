@@ -42,7 +42,7 @@ public class GuessNumber {
         }
     }
 
-    public void definitionVictory() {
+    public void determineWinner() {
         while (true) {
             if (player1.getTotal() > player2.getTotal()) {
                 System.out.println("Выйграл " + player1.getName() + " со счетом " + player1.getTotal() + " : " + player2.getTotal());
