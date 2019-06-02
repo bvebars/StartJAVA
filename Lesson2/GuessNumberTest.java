@@ -1,34 +1,29 @@
 import java.util.Scanner;
 
-public class CalculatorTest {
+public class GuessNumberTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Calculator calculator = new Calculator();
+        System.out.print("Введите имя первого игрока: ");
+        Player player1 = new Player(scanner.nextLine());
+        System.out.print("Введите имя второго игрока: ");
+        Player player2 = new Player(scanner.nextLine());
+
+        GuessNumber guessNumber = new GuessNumber(player1, player2);
+
         String answer;
 
         do {
-            System.out.print("Введите первое число: ");
-            calculator.setNumberOne(scanner.nextInt());
-
-            System.out.print("Введите оператор: ");
-            calculator.setOperator(scanner.next());
-
-            System.out.print("Введите второе число: ");
-            calculator.setNumberTwo(scanner.nextInt());
-
-            calculator.calculateNumber();
+            guessNumber.guessNumber();
             System.out.println("Хотите продолжить? [да/нет]:");
+            answer = scanner.nextLine();
 
-            do {
-                answer = scanner.next();
-                if (!answer.equals("да") && (!answer.equals("нет"))) {
-                    System.out.println("Введите правильный ответ ");
-                } else {
-                    break;
-                }
-            } while (true);
+            if (!answer.equals("да") && !answer.equals("нет")) {
+                System.out.println("Введите правильный ответ, в случае неправильного ответа играть придется с начала.");
+            }
 
         } while (!answer.equals("нет"));
+
+        guessNumber.determineWinner();
     }
 }
