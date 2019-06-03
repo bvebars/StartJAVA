@@ -27,7 +27,6 @@ public class GuessNumber {
                 System.out.println(player1.getName() + " не угадал");
                 System.out.println(" ");
             }
-
             System.out.print(player2.getName() + " вводит значение: ");
             player2.setNumber(scanner.nextInt());
 
@@ -42,7 +41,7 @@ public class GuessNumber {
         }
     }
 
-    public void determineWinner() {
+    public void incrementTotal() {
         while (true) {
             if (player1.getTotal() > player2.getTotal()) {
                 System.out.println("Выйграл " + player1.getName() + " со счетом " + player1.getTotal() + " : " + player2.getTotal());
