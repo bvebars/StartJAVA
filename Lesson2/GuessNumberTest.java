@@ -11,15 +11,15 @@ public class GuessNumberTest {
 
         GuessNumber guessNumber = new GuessNumber(player1, player2);
         String answer;
+
         do {
             guessNumber.guessNumber();
-            System.out.println("Хотите продолжить? [да/нет]:");
-            answer = scanner.nextLine();
 
-            if (!answer.equals("нет") && !answer.equals("да")) {
-                System.out.println("Введен неправильный ответ, вы будете переведены на начало игры");
-            }
-        } while (answer.equals("да") || !answer.equals("нет"));
+            do {
+                System.out.println("Хотите продолжить? [да/нет]:");
+                answer = scanner.nextLine();
+            } while (!answer.equals("да") && !answer.equals("нет"));
+        } while (answer.equals("да"));
         guessNumber.incrementTotal();
     }
 }
