@@ -21,7 +21,7 @@ public class GuessNumber {
 
             if (player1.getNumber() == randomNumber) {
                 System.out.println(player1.getName() + " угадал ");
-                player1.setTotal(player1.getTotal() + 1); //Подсчет общего кол-во побед (Отсебятина)
+                player1.incrementTotal(); //Подсчет общего кол-во побед (Отсебятина)
                 break;
             } else {
                 System.out.println(player1.getName() + " не угадал");
@@ -32,7 +32,7 @@ public class GuessNumber {
 
             if (player2.getNumber() == randomNumber) {
                 System.out.println(player2.getName() + " угадал");
-                player2.setTotal(player2.getTotal() + 1); //Подсчет общего кол-во побед (Отсебятина)
+                player2.incrementTotal(); //Подсчет общего кол-во побед (Отсебятина)
                 break;
             } else {
                 System.out.println(player2.getName() + " не угадал");
