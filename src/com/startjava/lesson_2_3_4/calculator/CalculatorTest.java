@@ -32,5 +32,8 @@ public class CalculatorTest {
             } while (true);
 
         } while (!answer.equals("нет"));
+
+        System.out.println("История ваших операций: ");
+        calculator.mathInference();
     }
 }
