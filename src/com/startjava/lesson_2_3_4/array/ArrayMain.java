@@ -1,25 +1,28 @@
 package com.startjava.lesson_2_3_4.array;
 
+import com.sun.deploy.util.StringUtils;
+
+import java.util.Arrays;
+
 public class ArrayMain {
-    public static void main(String[] args) {
-
-        int[] numbers = new int[6];
-
-        float[] numbers1 = { 5.1f, .5f, 200.5f};
-
-//        System.out.println(numbers.length);
-//        System.out.println(numbers1.length);
-//
-//
-//        System.out.println(numbers1[2]);
-
-        for (float v : numbers1) {
-            System.out.println(v);
-        }
+    public static void main(String []args){
+        String[] array = {"4","2"};
 
 
-        String[] text = new String[3];
+
+        array = putNumberInSeries(array);
+
+//        System.out.println(Arrays.toString(array));//return false. you won't get the same int[] object. But functionality achieved.
 
 
+        String j = StringUtils.join(Arrays.asList(array), ", ");
+
+        System.out.println(j);
+    }
+    private static String[] putNumberInSeries(String[] series) {
+        String[] localSeries = Arrays.copyOf(series, series.length+1);
+        localSeries[series.length] = "1";
+        System.out.println(Arrays.toString(localSeries));
+        return localSeries;
     }
 }

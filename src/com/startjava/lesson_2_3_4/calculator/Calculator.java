@@ -37,56 +37,37 @@ class Calculator {
     private String[] array = {};
 
     void calculateNumber() {
+        int res;
         while (true) {
-
             switch (operator) {
                 case "-":
-                    array = Arrays.copyOf(array, array.length + 5);
-                    array[array.length - 5] = String.valueOf(getNumberOne());
-                    array[array.length - 4] = "-";
-                    array[array.length - 3] = String.valueOf(getNumberTwo());
-                    array[array.length - 2] = "=";
-                    array[array.length - 1] = Math.subtractExact(getNumberOne(), getNumberTwo()) + " ";
+                    res = Math.subtractExact(getNumberOne(), getNumberTwo());
+                    array = addInEndArray(array, getNumberOne(), "-", getNumberTwo(), res);
+                    System.out.println(res);
                     break;
                 case "+":
-                    array = Arrays.copyOf(array, array.length + 5);
-                    array[array.length - 5] = String.valueOf(getNumberOne());
-                    array[array.length - 4] = "*";
-                    array[array.length - 3] = String.valueOf(getNumberTwo());
-                    array[array.length - 2] = "=";
-                    array[array.length - 1] = Math.addExact(getNumberOne(), getNumberTwo()) + " ";
+                    res = Math.addExact(getNumberOne(), getNumberTwo());
+                    array = addInEndArray(array, getNumberOne(), "+", getNumberTwo(), res);
+                    System.out.println(res);
                     break;
                 case "*":
-                    array = Arrays.copyOf(array, array.length + 5);
-                    array[array.length - 5] = String.valueOf(getNumberOne());
-                    array[array.length - 4] = "*";
-                    array[array.length - 3] = String.valueOf(getNumberTwo());
-                    array[array.length - 2] = "=";
-                    array[array.length - 1] = Math.multiplyExact(getNumberOne(), getNumberTwo()) + " ";
+                    res = Math.multiplyExact(getNumberOne(), getNumberTwo());
+                    array = addInEndArray(array, getNumberOne(), "*", getNumberTwo(), res);
+                    System.out.println(res);
                     break;
                 case "/":
-                    array = Arrays.copyOf(array, array.length + 5);
-                    array[array.length - 5] = String.valueOf(getNumberOne());
-                    array[array.length - 4] = "/";
-                    array[array.length - 3] = String.valueOf(getNumberTwo());
-                    array[array.length - 2] = "=";
-                    array[array.length - 1] = getNumberOne() / getNumberTwo() + " ";
+                    res = getNumberOne() / getNumberTwo();
+                    array = addInEndArray(array, getNumberOne(), "/", getNumberTwo(), res);
                     break;
                 case "^":
-                    array = Arrays.copyOf(array, array.length + 5);
-                    array[array.length - 5] = String.valueOf(getNumberOne());
-                    array[array.length - 4] = "^";
-                    array[array.length - 3] = String.valueOf(getNumberTwo());
-                    array[array.length - 2] = "=";
-                    array[array.length - 1] = Math.pow(getNumberOne(), getNumberTwo()) + " ";
+                    res = (int) Math.pow(getNumberOne(), getNumberTwo());
+                    array = addInEndArray(array, getNumberOne(), "^", getNumberTwo(), res);
+                    System.out.println(res);
                     break;
                 case "%":
-                    array = Arrays.copyOf(array, array.length + 5);
-                    array[array.length - 5] = String.valueOf(getNumberOne());
-                    array[array.length - 4] = "^";
-                    array[array.length - 3] = String.valueOf(getNumberTwo());
-                    array[array.length - 2] = "=";
-                    array[array.length - 1] = getNumberOne() % getNumberTwo() + " ";
+                    res = getNumberOne() % getNumberTwo();
+                    array = addInEndArray(array, getNumberOne(), "%", getNumberTwo(), res);
+                    System.out.println(res);
                     break;
             }
             break;
@@ -94,16 +75,22 @@ class Calculator {
     }
 
     private String createString() {
-        String output = "";
+        StringBuilder output = new StringBuilder();
 
         for (String str : array)
-            output = output + str + " ";
-        return output;
+            output.append(str).append(" ");
+        return output.toString();
     }
 
     void mathInference() {
-        for (String v : createString().split("  ", 0)) {
+        for (String v : createString().split(" {2}", 0)) {
             System.out.println(v + "  ");
         }
+    }
+
+    private String[] addInEndArray(String[] arr, int numberOne, String mathOperator, int numberTwo, int total) {
+        String[] result = Arrays.copyOf(arr, arr.length + 1);
+        result[arr.length] = numberOne + " " + mathOperator + " " + numberTwo + " " + "=" + " " + total + " ";
+        return result;
     }
 }
