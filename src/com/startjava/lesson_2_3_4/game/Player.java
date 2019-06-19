@@ -3,7 +3,7 @@ package com.startjava.lesson_2_3_4.game;
 public class Player {
     private String name;
     private int number;
-    private int total; //Отсебятина
+    private boolean win;
 
     public Player(String name) {
         this.name = name;
@@ -21,15 +21,15 @@ public class Player {
         this.number = number;
     }
 
+    public void setWin(boolean win) {
+        this.win = win;
+    }
+
     public int getNumber() {
         return number;
     }
 
-    public int getTotal() {
-        return total;
-    }
-
-    public void incrementTotal() {
-        total++;
+    public boolean getWin() {
+        return win;
     }
 }
