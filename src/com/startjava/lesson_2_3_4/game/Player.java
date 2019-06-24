@@ -3,9 +3,37 @@ package com.startjava.lesson_2_3_4.game;
 public class Player {
     private String name;
     private int number;
-    private boolean win;
+    private int incNumber = 0;
+    private boolean isWin = false;
+    private int[] array = new int[10];
 
-    public Player(String name) {
+    public boolean isWin() {
+        return isWin;
+    }
+
+    public void setWin(boolean win) {
+        isWin = win;
+    }
+
+
+    public int getIncNumber() {
+        return incNumber;
+    }
+
+    public void setIncNumber(int incNumber) {
+        this.incNumber = incNumber;
+    }
+
+
+    public int[] getArray() {
+        return array;
+    }
+
+    public void setArray(int[] array) {
+        this.array = array;
+    }
+
+    Player(String name) {
         this.name = name;
     }
 
@@ -13,23 +41,20 @@ public class Player {
         this.name = name;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public void setNumber(int number) {
+    void setNumber(int number) {
         this.number = number;
     }
 
-    public void setWin(boolean win) {
-        this.win = win;
-    }
-
-    public int getNumber() {
+    int getNumber() {
         return number;
     }
 
-    public boolean getWin() {
-        return win;
-    }
+
+//    public static int incrementNumber() {
+//        return incrementNumber() + 1;
+//    }
 }

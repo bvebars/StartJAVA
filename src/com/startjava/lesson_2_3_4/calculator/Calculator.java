@@ -8,6 +8,7 @@ class Calculator {
     private int numberOne;
     private String operator;
     private int numberTwo;
+    private int sign;
 
     private int getNumberOne() {
         return numberOne;
@@ -21,10 +22,6 @@ class Calculator {
         return numberTwo;
     }
 
-    void setNumberTwo(int numberTwo) {
-        this.numberTwo = numberTwo;
-    }
-
     void setOperator(String operator) {
         while (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") &&
                 !operator.equals("/") && !operator.equals("^") && !operator.equals("%")) {
@@ -34,63 +31,60 @@ class Calculator {
         this.operator = operator;
     }
 
-    private String[] array = {};
-
     void calculateNumber() {
-        int res;
         while (true) {
+
             switch (operator) {
                 case "-":
-                    res = Math.subtractExact(getNumberOne(), getNumberTwo());
-                    array = addInEndArray(array, getNumberOne(), "-", getNumberTwo(), res);
-                    System.out.println(res);
+                    sign = Math.subtractExact(getNumberOne(), getNumberTwo());
                     break;
                 case "+":
-                    res = Math.addExact(getNumberOne(), getNumberTwo());
-                    array = addInEndArray(array, getNumberOne(), "+", getNumberTwo(), res);
-                    System.out.println(res);
+                    sign = Math.addExact(getNumberOne(), getNumberTwo());
                     break;
                 case "*":
-                    res = Math.multiplyExact(getNumberOne(), getNumberTwo());
-                    array = addInEndArray(array, getNumberOne(), "*", getNumberTwo(), res);
-                    System.out.println(res);
+                    sign = Math.multiplyExact(getNumberOne(), getNumberTwo());
                     break;
                 case "/":
-                    res = getNumberOne() / getNumberTwo();
-                    array = addInEndArray(array, getNumberOne(), "/", getNumberTwo(), res);
+                    sign = getNumberOne() / getNumberTwo();
                     break;
                 case "^":
-                    res = (int) Math.pow(getNumberOne(), getNumberTwo());
-                    array = addInEndArray(array, getNumberOne(), "^", getNumberTwo(), res);
-                    System.out.println(res);
+                    sign = (int) Math.pow(getNumberOne(), getNumberTwo());
                     break;
                 case "%":
-                    res = getNumberOne() % getNumberTwo();
-                    array = addInEndArray(array, getNumberOne(), "%", getNumberTwo(), res);
-                    System.out.println(res);
+                    sign = getNumberOne() % getNumberTwo();
                     break;
             }
             break;
         }
     }
 
-    private String createString() {
-        StringBuilder output = new StringBuilder();
-
-        for (String str : array)
-            output.append(str).append(" ");
-        return output.toString();
+    static String[] addInEndArray(String[] arr, String sign) {
+        arr = Arrays.copyOf(arr, arr.length + 1);
+        arr[arr.length - 1] = sign;
+        return arr;
     }
 
-    void mathInference() {
-        for (String v : createString().split(" {2}", 0)) {
+    void createString(String[] arr) {
+        StringBuilder output = new StringBuilder();
+        int increment1 = 0;
+        int increment2 = 2;
+
+        for (String str : arr) {
+
+            if (increment1 == increment2) {
+                output.append(str).append("  ");
+                increment2 = increment2 + 3;
+            } else {
+                output.append(str).append(" ");
+            }
+            increment1++;
+        }
+        mathInference(output.toString());
+    }
+
+    private void mathInference(String arr) {
+        for (String v : arr.split(" {2}", 0)) {
             System.out.println(v + "  ");
         }
-    }
-
-    private String[] addInEndArray(String[] arr, int numberOne, String mathOperator, int numberTwo, int total) {
-        String[] result = Arrays.copyOf(arr, arr.length + 1);
-        result[arr.length] = numberOne + " " + mathOperator + " " + numberTwo + " " + "=" + " " + total + " ";
-        return result;
     }
 }

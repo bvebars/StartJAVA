@@ -24,5 +24,6 @@ public class GuessNumberTest {
                 answer = scanner.nextLine();
             } while (!answer.equals("да") && !answer.equals("нет"));
         } while (answer.equals("да"));
+        System.out.println("Вух вух");
     }
 }

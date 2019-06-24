@@ -1,28 +1,33 @@
 package com.startjava.lesson_2_3_4.calculator;
-
 import java.util.Scanner;
 
 public class CalculatorTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         Calculator calculator = new Calculator();
+        String[] array = {};
         String answer;
 
         do {
             System.out.print("Введите первое число: ");
-            calculator.setNumberOne(scanner.nextInt());
+            int number1 = scanner.nextInt();
+            calculator.setNumberOne(number1);
+            array = Calculator.addInEndArray(array, String.valueOf(number1));
 
             System.out.print("Введите оператор: ");
-            calculator.setOperator(scanner.next());
+            String operator = scanner.next();
+            calculator.setOperator(operator);
+            array = Calculator.addInEndArray(array, operator);
 
             System.out.print("Введите второе число: ");
-            calculator.setNumberTwo(scanner.nextInt());
+            int number2 = scanner.nextInt();
+            calculator.setNumberOne(number2);
+            array = Calculator.addInEndArray(array, String.valueOf(number2));
 
             calculator.calculateNumber();
-            System.out.println("Хотите продолжить? [да/нет]:");
 
             do {
+                System.out.println("Хотите продолжить? [да/нет]:");
                 answer = scanner.next();
                 if (!answer.equals("да") && (!answer.equals("нет"))) {
                     System.out.println("Введите правильный ответ ");
@@ -32,8 +37,7 @@ public class CalculatorTest {
             } while (true);
 
         } while (!answer.equals("нет"));
-
-        System.out.println("История ваших операций: ");
-        calculator.mathInference();
+        System.out.println("История ваших операций: " );
+        calculator.createString(array);
     }
 }
