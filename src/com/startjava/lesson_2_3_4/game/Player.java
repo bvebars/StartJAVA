@@ -7,25 +7,23 @@ public class Player {
     private boolean isWin = false;
     private int[] array = new int[10];
 
-    public boolean isWin() {
+    boolean isWin() {
         return isWin;
     }
 
-    public void setWin(boolean win) {
+    void setWin(boolean win) {
         isWin = win;
     }
 
-
-    public int getIncNumber() {
+    int getIncNumber() {
         return incNumber;
     }
 
-    public void setIncNumber(int incNumber) {
+    void setIncNumber(int incNumber) {
         this.incNumber = incNumber;
     }
 
-
-    public int[] getArray() {
+    int[] getArray() {
         return array;
     }
 
@@ -52,9 +50,4 @@ public class Player {
     int getNumber() {
         return number;
     }
-
-
-//    public static int incrementNumber() {
-//        return incrementNumber() + 1;
-//    }
 }

@@ -23,7 +23,7 @@ public class GuessNumberTest {
                 System.out.println("Хотите продолжить? [да/нет]:");
                 answer = scanner.nextLine();
             } while (!answer.equals("да") && !answer.equals("нет"));
+
         } while (answer.equals("да"));
-        System.out.println("Вух вух");
     }
 }
