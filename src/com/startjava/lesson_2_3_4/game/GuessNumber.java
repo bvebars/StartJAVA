@@ -59,11 +59,11 @@ class GuessNumber {
                 System.out.println("У вас закончились попытки");
             }
         }
-        System.out.println(player1.getName() + " Ввел: " + arrayOutput(player1.getIncNumber(), player1.getArray()));
-        System.out.println(player2.getName() + " Ввел: " + arrayOutput(player2.getIncNumber(), player2.getArray()));
+        System.out.println(player1.getName() + " Ввел: " + OutputNumbersNamedByPlayer(player1.getIncNumber(), player1.getArray()));
+        System.out.println(player2.getName() + " Ввел: " + OutputNumbersNamedByPlayer(player2.getIncNumber(), player2.getArray()));
     }
 
-    private String arrayOutput(int increment, int[] array) {
+    private String OutputNumbersNamedByPlayer(int increment, int[] array) {
         StringBuilder res = new StringBuilder();
 
         for (int i = 0; i < increment; i++) {
