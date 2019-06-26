@@ -33,7 +33,7 @@ class Calculator {
         array[array.length - 1] = arr;
     }
 
-    void convertArrayToString() {
+    void outputValues() {
         StringBuilder result = new StringBuilder();
         int inc = 0;
         for (String s : array) {
@@ -53,7 +53,7 @@ class Calculator {
         }
     }
 
-    void convertStringToArray(String str) {
+    void convertStringToValue(String str) {
         StringBuilder numberOneStr = new StringBuilder();
         StringBuilder numberTwoStr = new StringBuilder();
 

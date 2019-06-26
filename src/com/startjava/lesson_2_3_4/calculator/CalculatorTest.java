@@ -11,7 +11,7 @@ public class CalculatorTest {
         while (answer.equals("да")) {
             System.out.print("Введите математическое выражение: ");
             String mathExpression = scanner.nextLine();
-            calculator.convertStringToArray(mathExpression);
+            calculator.convertStringToValue(mathExpression);
             calculator.calculate();
 
             do {
@@ -21,6 +21,6 @@ public class CalculatorTest {
 
         }
         System.out.println("История ваших операций: ");
-        calculator.convertArrayToString();
+        calculator.outputValues();
     }
 }
