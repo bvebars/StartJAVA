@@ -8,9 +8,9 @@ class Calculator {
     private int numberOne;
     private String operator;
     private int numberTwo;
-    private int sign;
+    private String[] array = {};
 
-    private int getNumberOne() {
+    int getNumberOne() {
         return numberOne;
     }
 
@@ -18,8 +18,12 @@ class Calculator {
         this.numberOne = numberOne;
     }
 
-    private int getNumberTwo() {
+    int getNumberTwo() {
         return numberTwo;
+    }
+
+    void setNumberTwo(int numberTwo) {
+        this.numberTwo = numberTwo;
     }
 
     void setOperator(String operator) {
@@ -32,58 +36,51 @@ class Calculator {
     }
 
     void calculateNumber() {
-        while (true) {
-
-            switch (operator) {
-                case "-":
-                    sign = Math.subtractExact(getNumberOne(), getNumberTwo());
-                    break;
-                case "+":
-                    sign = Math.addExact(getNumberOne(), getNumberTwo());
-                    break;
-                case "*":
-                    sign = Math.multiplyExact(getNumberOne(), getNumberTwo());
-                    break;
-                case "/":
-                    sign = getNumberOne() / getNumberTwo();
-                    break;
-                case "^":
-                    sign = (int) Math.pow(getNumberOne(), getNumberTwo());
-                    break;
-                case "%":
-                    sign = getNumberOne() % getNumberTwo();
-                    break;
-            }
-            break;
+        switch (operator) {
+            case "-":
+                System.out.println(Math.subtractExact(getNumberOne(), getNumberTwo()));
+                break;
+            case "+":
+                System.out.println(Math.addExact(getNumberOne(), getNumberTwo()));
+                break;
+            case "*":
+                System.out.println(Math.multiplyExact(getNumberOne(), getNumberTwo()));
+                break;
+            case "/":
+                System.out.println(getNumberOne() / getNumberTwo());
+                break;
+            case "^":
+                System.out.println((int) Math.pow(getNumberOne(), getNumberTwo()));
+                break;
+            case "%":
+                System.out.println(getNumberOne() % getNumberTwo());
+                break;
+            default:
+                System.out.println("Ошибка");
         }
     }
 
-    static String[] addInEndArray(String[] arr, String sign) {
-        arr = Arrays.copyOf(arr, arr.length + 1);
-        arr[arr.length - 1] = sign;
-        return arr;
+    void addInEndArray(String arr) {
+        array = Arrays.copyOf(array, array.length + 1);
+        array[array.length - 1] = arr;
     }
 
-    void createString(String[] arr) {
-        StringBuilder output = new StringBuilder();
-        int increment1 = 0;
-        int increment2 = 2;
-
-        for (String str : arr) {
-
-            if (increment1 == increment2) {
-                output.append(str).append("  ");
-                increment2 = increment2 + 3;
-            } else {
-                output.append(str).append(" ");
+    void convertArrayToString() {
+        StringBuilder result = new StringBuilder();
+        int inc = 0;
+        for (String s : array) {
+            result.append(s).append(" ");
+            inc++;
+            if (inc == 3) {
+                result.append(" ");
+                inc = inc - 3;
             }
-            increment1++;
         }
-        mathInference(output.toString());
+        mathInference(String.valueOf(result));
     }
 
-    private void mathInference(String arr) {
-        for (String v : arr.split(" {2}", 0)) {
+    private void mathInference(String str) {
+        for (String v : str.split(" {2}", 0)) {
             System.out.println(v + "  ");
         }
     }
