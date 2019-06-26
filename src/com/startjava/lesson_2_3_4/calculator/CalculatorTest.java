@@ -9,26 +9,14 @@ public class CalculatorTest {
         String answer = "да";
 
         while (answer.equals("да")) {
-            System.out.print("Введите первое число: ");
-            int number1 = scanner.nextInt();
-            calculator.setNumberOne(number1);
-            calculator.addInEndArray(String.valueOf(calculator.getNumberOne()));
-
-            System.out.print("Введите оператор: ");
-            String operator = scanner.next();
-            calculator.setOperator(operator);
-            calculator.addInEndArray(operator);
-
-            System.out.print("Введите второе число: ");
-            int number2 = scanner.nextInt();
-            calculator.setNumberTwo(number2);
-            calculator.addInEndArray(String.valueOf(calculator.getNumberTwo()));
-
-            calculator.calculateNumber();
+            System.out.print("Введите математическое выражение: ");
+            String mathExpression = scanner.nextLine();
+            calculator.convertStringToArray(mathExpression);
+            calculator.calculate();
 
             do {
                 System.out.println("Хотите продолжить? [да/нет]:");
-                answer = scanner.next();
+                answer = scanner.nextLine();
             } while (!answer.equals("да") && !answer.equals("нет"));
 
         }

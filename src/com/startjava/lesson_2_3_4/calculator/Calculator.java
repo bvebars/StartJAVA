@@ -1,66 +1,35 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 class Calculator {
-    private Scanner scanner = new Scanner(System.in);
     private int numberOne;
     private String operator;
     private int numberTwo;
     private String[] array = {};
 
-    int getNumberOne() {
+    private int getNumberOne() {
         return numberOne;
     }
 
-    void setNumberOne(int numberOne) {
+    private void setNumberOne(int numberOne) {
         this.numberOne = numberOne;
     }
 
-    int getNumberTwo() {
+    private int getNumberTwo() {
         return numberTwo;
     }
 
-    void setNumberTwo(int numberTwo) {
+    private void setNumberTwo(int numberTwo) {
         this.numberTwo = numberTwo;
     }
 
-    void setOperator(String operator) {
-        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") &&
-                !operator.equals("/") && !operator.equals("^") && !operator.equals("%")) {
-            System.out.println("Математическая операция не поддерживается");
-            operator = scanner.next();
-        }
-        this.operator = operator;
+
+    private String getOperator() {
+        return operator;
     }
 
-    void calculateNumber() {
-        switch (operator) {
-            case "-":
-                System.out.println(Math.subtractExact(getNumberOne(), getNumberTwo()));
-                break;
-            case "+":
-                System.out.println(Math.addExact(getNumberOne(), getNumberTwo()));
-                break;
-            case "*":
-                System.out.println(Math.multiplyExact(getNumberOne(), getNumberTwo()));
-                break;
-            case "/":
-                System.out.println(getNumberOne() / getNumberTwo());
-                break;
-            case "^":
-                System.out.println((int) Math.pow(getNumberOne(), getNumberTwo()));
-                break;
-            case "%":
-                System.out.println(getNumberOne() % getNumberTwo());
-                break;
-            default:
-                System.out.println("Ошибка");
-        }
-    }
-
-    void addInEndArray(String arr) {
+    private void addInEndArray(String arr) {
         array = Arrays.copyOf(array, array.length + 1);
         array[array.length - 1] = arr;
     }
@@ -82,6 +51,59 @@ class Calculator {
     private void mathInference(String str) {
         for (String v : str.split(" {2}", 0)) {
             System.out.println(v + "  ");
+        }
+    }
+
+    void convertStringToArray(String str) {
+        StringBuilder numberOneStr = new StringBuilder();
+        StringBuilder numberTwoStr = new StringBuilder();
+
+        int i = 0;
+        while (!(str.charAt(i) == ' ')) {
+            numberOneStr.append(str.charAt(i));
+            i++;
+        }
+
+        if (i == numberOneStr.length()) {
+            operator = String.valueOf(str.charAt(i + 1));
+            i += 2;
+        }
+
+        while (i + 1 < str.length()) {
+            i++;
+            numberTwoStr.append(str.charAt(i));
+        }
+
+        setNumberOne(Integer.parseInt(String.valueOf(numberOneStr)));
+        setNumberTwo(Integer.parseInt(String.valueOf(numberTwoStr)));
+
+        addInEndArray(String.valueOf(getNumberOne()));
+        addInEndArray(String.valueOf(getOperator()));
+        addInEndArray(String.valueOf(getNumberTwo()));
+    }
+
+    void calculate() {
+        switch (operator) {
+            case "-":
+                System.out.println(Math.subtractExact(getNumberOne(), getNumberTwo()));
+                break;
+            case "+":
+                System.out.println(Math.addExact(getNumberOne(), getNumberTwo()));
+                break;
+            case "*":
+                System.out.println(Math.multiplyExact(getNumberOne(), getNumberTwo()));
+                break;
+            case "/":
+                System.out.println(getNumberOne() / getNumberTwo());
+                break;
+            case "^":
+                System.out.println((int) Math.pow(getNumberOne(), getNumberTwo()));
+                break;
+            case "%":
+                System.out.println(getNumberOne() % getNumberTwo());
+                break;
+            default:
+                System.out.println("Ошибка");
         }
     }
 }
