@@ -24,7 +24,6 @@ class Calculator {
         this.numberTwo = numberTwo;
     }
 
-
     private String getOperator() {
         return operator;
     }
