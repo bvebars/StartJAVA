@@ -6,7 +6,7 @@ class Calculator {
     private int numberOne;
     private String operator;
     private int numberTwo;
-    private String[] array = {};
+    private String[] arrayOfValuesReceived = {};
 
     private int getNumberOne() {
         return numberOne;
@@ -29,14 +29,14 @@ class Calculator {
     }
 
     private void addInEndArray(String arr) {
-        array = Arrays.copyOf(array, array.length + 1);
-        array[array.length - 1] = arr;
+        arrayOfValuesReceived = Arrays.copyOf(arrayOfValuesReceived, arrayOfValuesReceived.length + 1);
+        arrayOfValuesReceived[arrayOfValuesReceived.length - 1] = arr;
     }
 
     void outputValues() {
         StringBuilder result = new StringBuilder();
         int inc = 0;
-        for (String s : array) {
+        for (String s : arrayOfValuesReceived) {
             result.append(s).append(" ");
             inc++;
             if (inc == 3) {
@@ -53,7 +53,7 @@ class Calculator {
         }
     }
 
-    void convertStringToValue(String str) {
+    private void convertStringToValue(String str) {
         StringBuilder numberOneStr = new StringBuilder();
         StringBuilder numberTwoStr = new StringBuilder();
 
@@ -81,7 +81,8 @@ class Calculator {
         addInEndArray(String.valueOf(getNumberTwo()));
     }
 
-    void calculate() {
+    void calculate(String mathExpression) {
+        convertStringToValue(mathExpression);
         switch (operator) {
             case "-":
                 System.out.println(Math.subtractExact(getNumberOne(), getNumberTwo()));

@@ -11,14 +11,12 @@ public class CalculatorTest {
         while (answer.equals("да")) {
             System.out.print("Введите математическое выражение: ");
             String mathExpression = scanner.nextLine();
-            calculator.convertStringToValue(mathExpression);
-            calculator.calculate();
+            calculator.calculate(mathExpression);
 
             do {
                 System.out.println("Хотите продолжить? [да/нет]:");
                 answer = scanner.nextLine();
             } while (!answer.equals("да") && !answer.equals("нет"));
-
         }
         System.out.println("История ваших операций: ");
         calculator.outputValues();
