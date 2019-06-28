@@ -4,16 +4,17 @@ public class Player {
     private String name;
     private int number;
     private int incNumber = 0;
-    private boolean isWin = false;
-    private int[] array = new int[10];
+    private boolean isWin;
 
-    boolean isWin() {
+     boolean getIsWin() {
         return isWin;
     }
 
-    void setWin(boolean win) {
-        isWin = win;
+     void setIsWin(boolean isWin) {
+        this.isWin = isWin;
     }
+
+    private int[] array = new int[10];
 
     int getIncNumber() {
         return incNumber;
@@ -32,10 +33,6 @@ public class Player {
     }
 
     Player(String name) {
-        this.name = name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 

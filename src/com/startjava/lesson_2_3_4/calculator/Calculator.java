@@ -8,23 +8,23 @@ class Calculator {
     private int numberTwo;
     private String[] arrayOfValuesReceived = {};
 
-    private int getNumberOne() {
+    public int getNumberOne() {
         return numberOne;
     }
 
-    private void setNumberOne(int numberOne) {
+    public void setNumberOne(int numberOne) {
         this.numberOne = numberOne;
     }
 
-    private int getNumberTwo() {
+    public int getNumberTwo() {
         return numberTwo;
     }
 
-    private void setNumberTwo(int numberTwo) {
+    public void setNumberTwo(int numberTwo) {
         this.numberTwo = numberTwo;
     }
 
-    private String getOperator() {
+    public String getOperator() {
         return operator;
     }
 
@@ -47,63 +47,52 @@ class Calculator {
         mathInference(String.valueOf(result));
     }
 
-    private void mathInference(String str) {
-        for (String v : str.split(" {2}", 0)) {
-            System.out.println(v + "  ");
-        }
-    }
-
-    private void convertStringToValue(String str) {
-        StringBuilder numberOneStr = new StringBuilder();
-        StringBuilder numberTwoStr = new StringBuilder();
-
-        int i = 0;
-        while (!(str.charAt(i) == ' ')) {
-            numberOneStr.append(str.charAt(i));
-            i++;
-        }
-
-        if (i == numberOneStr.length()) {
-            operator = String.valueOf(str.charAt(i + 1));
-            i += 2;
-        }
-
-        while (i + 1 < str.length()) {
-            i++;
-            numberTwoStr.append(str.charAt(i));
-        }
-
-        setNumberOne(Integer.parseInt(String.valueOf(numberOneStr)));
-        setNumberTwo(Integer.parseInt(String.valueOf(numberTwoStr)));
-
-        addInEndArray(String.valueOf(getNumberOne()));
-        addInEndArray(String.valueOf(getOperator()));
-        addInEndArray(String.valueOf(getNumberTwo()));
-    }
-
     void calculate(String mathExpression) {
-        convertStringToValue(mathExpression);
+        delimitingStringByChars(mathExpression);
+
         switch (operator) {
             case "-":
-                System.out.println(Math.subtractExact(getNumberOne(), getNumberTwo()));
+                System.out.println(Math.subtractExact(numberOne, numberTwo));
                 break;
             case "+":
-                System.out.println(Math.addExact(getNumberOne(), getNumberTwo()));
+                System.out.println(Math.addExact(numberOne, numberTwo));
                 break;
             case "*":
-                System.out.println(Math.multiplyExact(getNumberOne(), getNumberTwo()));
+                System.out.println(Math.multiplyExact(numberOne, numberTwo));
                 break;
             case "/":
-                System.out.println(getNumberOne() / getNumberTwo());
+                System.out.println(numberOne / numberTwo);
                 break;
             case "^":
-                System.out.println((int) Math.pow(getNumberOne(), getNumberTwo()));
+                System.out.println((int) Math.pow(numberOne, numberTwo));
                 break;
             case "%":
-                System.out.println(getNumberOne() % getNumberTwo());
+                System.out.println(numberOne % numberTwo);
                 break;
             default:
                 System.out.println("Ошибка");
+        }
+    }
+
+    private void delimitingStringByChars(String strMathExpression1) {
+        String[] temporaryArray = new String[3];
+        int i = 0;
+        for (String v : strMathExpression1.split(" ", 0)) {
+            temporaryArray[i] = v;
+            i++;
+        }
+        numberOne = Integer.parseInt(temporaryArray[0]);
+        operator = temporaryArray[1];
+        numberTwo = Integer.parseInt(temporaryArray[2]);
+
+        addInEndArray(String.valueOf(numberOne));
+        addInEndArray(operator);
+        addInEndArray(String.valueOf(numberTwo));
+    }
+
+    private void mathInference(String strMathExpression2) {
+        for (String v : strMathExpression2.split(" {2}", 0)) {
+            System.out.println(v + "  ");
         }
     }
 }
