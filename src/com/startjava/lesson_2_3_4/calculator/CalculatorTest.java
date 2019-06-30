@@ -18,7 +18,6 @@ public class CalculatorTest {
                 answer = scanner.nextLine();
             } while (!answer.equals("да") && !answer.equals("нет"));
         }
-        System.out.println("История ваших операций: ");
-        calculator.mathInference();
+        System.out.println("Конец: ");
     }
 }
