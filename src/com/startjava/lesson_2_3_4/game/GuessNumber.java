@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 class GuessNumber {
-
     private Player player1;
     private Player player2;
 
