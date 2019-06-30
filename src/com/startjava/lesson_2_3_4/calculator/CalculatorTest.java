@@ -19,6 +19,6 @@ public class CalculatorTest {
             } while (!answer.equals("да") && !answer.equals("нет"));
         }
         System.out.println("История ваших операций: ");
-        calculator.outputValues();
+        calculator.mathInference();
     }
 }

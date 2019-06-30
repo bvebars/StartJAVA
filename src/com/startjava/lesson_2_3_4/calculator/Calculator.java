@@ -28,12 +28,7 @@ class Calculator {
         return operator;
     }
 
-    private void addInEndArray(String arr) {
-        arrayOfValuesReceived = Arrays.copyOf(arrayOfValuesReceived, arrayOfValuesReceived.length + 1);
-        arrayOfValuesReceived[arrayOfValuesReceived.length - 1] = arr;
-    }
-
-    void outputValues() {
+    public void mathInference() {
         StringBuilder result = new StringBuilder();
         int inc = 0;
         for (String s : arrayOfValuesReceived) {
@@ -44,10 +39,12 @@ class Calculator {
                 inc = inc - 3;
             }
         }
-        mathInference(String.valueOf(result));
+        for (String v : String.valueOf(result).split(" {2}", 0)) {
+            System.out.println(v + "  ");
+        }
     }
 
-    void calculate(String mathExpression) {
+    public void calculate(String mathExpression) {
         delimitingStringByChars(mathExpression);
 
         switch (operator) {
@@ -74,25 +71,20 @@ class Calculator {
         }
     }
 
-    private void delimitingStringByChars(String strMathExpression1) {
-        String[] temporaryArray = new String[3];
-        int i = 0;
-        for (String v : strMathExpression1.split(" ", 0)) {
-            temporaryArray[i] = v;
-            i++;
-        }
-        numberOne = Integer.parseInt(temporaryArray[0]);
-        operator = temporaryArray[1];
-        numberTwo = Integer.parseInt(temporaryArray[2]);
+    private void delimitingStringByChars(String MathExpression) {
+        String[] expression = MathExpression.split(" ");
 
-        addInEndArray(String.valueOf(numberOne));
-        addInEndArray(operator);
-        addInEndArray(String.valueOf(numberTwo));
+        numberOne = Integer.parseInt(expression[0]);
+        operator = expression[1];
+        numberTwo = Integer.parseInt(expression[2]);
+
+        addInArray(String.valueOf(numberOne));
+        addInArray(operator);
+        addInArray(String.valueOf(numberTwo));
     }
 
-    private void mathInference(String strMathExpression2) {
-        for (String v : strMathExpression2.split(" {2}", 0)) {
-            System.out.println(v + "  ");
-        }
+    private void addInArray(String arr) {
+        arrayOfValuesReceived = Arrays.copyOf(arrayOfValuesReceived, arrayOfValuesReceived.length + 1);
+        arrayOfValuesReceived[arrayOfValuesReceived.length - 1] = arr;
     }
 }
