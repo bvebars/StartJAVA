@@ -2,49 +2,49 @@ package com.startjava.lesson_2_3_4.game;
 
 public class Player {
     private String name;
-    private int number;
-    private int incNumber = 0;
-    private boolean isWin;
 
-     boolean getIsWin() {
+    private int numberOfAttempts;
+    private boolean isWin;
+    private int numbersEntered;
+    private int [] arraysNumbers = new int[10];
+
+    public int[] getArraysNumbers() {
+        return arraysNumbers;
+    }
+
+    public void setArraysNumbers(int[] arraysNumbers) {
+        this.arraysNumbers = arraysNumbers;
+    }
+
+    public int getNumbersEntered() {
+        return numbersEntered;
+    }
+
+    public void setNumbersEntered(int numbersEntered) {
+        this.numbersEntered = numbersEntered;
+    }
+
+    public boolean getIsWin() {
         return isWin;
     }
 
-     void setIsWin(boolean isWin) {
+    public void setIsWin(boolean isWin) {
         this.isWin = isWin;
     }
 
-    private int[] array = new int[10];
-
-    int getIncNumber() {
-        return incNumber;
+    public int getNumberOfAttempts() {
+        return numberOfAttempts;
     }
 
-    void setIncNumber(int incNumber) {
-        this.incNumber = incNumber;
+    public void setNumberOfAttempts(int numberOfAttempts) {
+        this.numberOfAttempts = numberOfAttempts;
     }
 
-    int[] getArray() {
-        return array;
-    }
-
-    public void setArray(int[] array) {
-        this.array = array;
-    }
-
-    Player(String name) {
+    public Player(String name) {
         this.name = name;
     }
 
-    String getName() {
+    public String getName() {
         return name;
-    }
-
-    void setNumber(int number) {
-        this.number = number;
-    }
-
-    int getNumber() {
-        return number;
     }
 }
