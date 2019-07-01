@@ -12,81 +12,64 @@ class GuessNumber {
         this.player2 = player2;
     }
 
-    public void guessNumber() {
-        Scanner scanner = new Scanner(System.in);
+    void guessNumber() {
         int randomNumber = (int) (Math.random() * 101);
         System.out.println(randomNumber); //Случ число
-
-        Arrays.fill(player1.getArraysNumbers(), 0, player1.getNumberOfAttempts(), 0);
-        Arrays.fill(player2.getArraysNumbers(), 0, player2.getNumberOfAttempts(), 0);
+        Arrays.fill(player1.getAttempts(), 0, player1.getNumberOfAttempts(), 0);
 
         player1.setNumberOfAttempts(0);
         player2.setNumberOfAttempts(0);
         player1.setIsWin(false);
         player2.setIsWin(false);
 
-        while (player1.getNumberOfAttempts() + player2.getNumberOfAttempts() < 10) {
+        while (!player1.getIsWin() && !player2.getIsWin()) {
             System.out.print(player1.getName() + " вводит значение: ");
-            player1.setNumbersEntered(scanner.nextInt());
+            determineTheWinner(player1, randomNumber);
 
-            if (player1.getNumbersEntered() == randomNumber) {
-                player1.getArraysNumbers()[player1.getNumberOfAttempts()] = player1.getNumbersEntered();
-                player1.setArraysNumbers(Arrays.copyOf(player1.getArraysNumbers(), player1.getArraysNumbers().length + 1));
-                player1.setNumberOfAttempts(player1.getNumberOfAttempts() + 1);
-                player1.setIsWin(true);
-                break;
-
-            } else {
-                System.out.println(player1.getNumbersEntered() + " не угадал, осталось попыток: " + (9 - player1.getNumberOfAttempts()));
-                System.out.println(" ");
-
-                player1.getArraysNumbers()[player1.getNumberOfAttempts()] = player1.getNumbersEntered();
-                player1.setArraysNumbers(Arrays.copyOf(player1.getArraysNumbers(), player1.getArraysNumbers().length + 1));
-                player1.setNumberOfAttempts(player1.getNumberOfAttempts() + 1);
+            if (!player1.getIsWin()) {
+                System.out.print(player2.getName() + " вводит значение: ");
+                determineTheWinner(player2, randomNumber);
             }
-
-            System.out.print(player2.getName() + " вводит значение: ");
-            player2.setNumbersEntered(scanner.nextInt());
-
-            if (player1.getNumbersEntered() == randomNumber) {
-                player2.getArraysNumbers()[player2.getNumberOfAttempts()] = player2.getNumbersEntered();
-                player2.setArraysNumbers(Arrays.copyOf(player2.getArraysNumbers(), player2.getArraysNumbers().length + 1));
-                player2.setNumberOfAttempts(player2.getNumberOfAttempts() + 1);
-                player1.setIsWin(true);
+            if (player1.getNumberOfAttempts() + player2.getNumberOfAttempts() == 20) {
+                System.out.println("У вас закончились попытки");
                 break;
-
-            } else {
-                System.out.println(player2.getNumbersEntered() + " не угадал, осталось попыток: " + (9 - player2.getNumberOfAttempts()));
-                System.out.println(" ");
-
-                player2.getArraysNumbers()[player2.getNumberOfAttempts()] = player2.getNumbersEntered();
-                player2.setArraysNumbers(Arrays.copyOf(player2.getArraysNumbers(), player2.getArraysNumbers().length + 1));
-                player2.setNumberOfAttempts(player2.getNumberOfAttempts() + 1);
             }
         }
-        System.out.println(player1.getName() + " Ввел: " + OutputNumbersNamedByPlayer(player1.getNumberOfAttempts(), player1.getArraysNumbers()));
-        System.out.println(player2.getName() + " Ввел: " + OutputNumbersNamedByPlayer(player2.getNumberOfAttempts(), player2.getArraysNumbers()));
+        System.out.println(player1.getName() + " Ввел: " + outputArrayWithNumbers(player1.getNumberOfAttempts(), player1.getAttempts()));
+        System.out.println(player2.getName() + " Ввел: " + outputArrayWithNumbers(player2.getNumberOfAttempts(), player2.getAttempts()));
     }
 
-    private String OutputNumbersNamedByPlayer(int increment, int[] array) {
+    private String outputArrayWithNumbers(int attempt, int[] arrayOfInputNumbers) {
         StringBuilder res = new StringBuilder();
 
-        for (int i = 0; i < increment; i++) {
-            res.append(array[i]).append(" ");
+        for (int i = 0; i < attempt; i++) {
+            res.append(arrayOfInputNumbers[i]).append(" ");
         }
         return res.toString();
     }
 
-   public void incrementTotal() {
-        if (player1.getIsWin()) {
-            System.out.println("Игрок " + player1.getName() + " угадал число " +
-                    player1.getArraysNumbers()[player1.getNumberOfAttempts() - 1] + " с " + (player1.getNumberOfAttempts()) + " попытки");
+    private void determineTheWinner(Player player, int randomNumber) {
+        Scanner scanner = new Scanner(System.in);
+        player.setNumbersEntered(scanner.nextInt());
 
-        } else if (player2.getIsWin()) {
-            System.out.println("Игрок " + player2.getName() + " угадал число " +
-                    player2.getArraysNumbers()[player2.getNumberOfAttempts() - 1] + " с " + (player2.getNumberOfAttempts()) + " попытки");
+        if (player.getNumbersEntered() == randomNumber) {
+            player.setAttempts(player.getNumbersEntered());
+            player.setIsWin(true);
+            numberOfAttempts(player);
+            player.setNumberOfAttempts(player.getNumberOfAttempts() + 1);
+        } else {
+            player.setAttempts(player.getNumbersEntered());
+            System.out.println(player.getName() + " не угадал, осталось попыток: " + (9 - player.getNumberOfAttempts()));
+            System.out.println(" ");
+            player.setNumberOfAttempts(player.getNumberOfAttempts() + 1);
+        }
+    }
+
+    private void numberOfAttempts(Player player) {
+        if (player.getIsWin()) {
+            System.out.println("Игрок " + player.getName() + " угадал число " +
+                    player.getAttempts()[player.getNumberOfAttempts()] + " с " + (player.getNumberOfAttempts() + 1) + " попытки");
         }
     }
 }
-
 

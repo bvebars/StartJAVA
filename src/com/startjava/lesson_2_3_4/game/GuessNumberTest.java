@@ -15,11 +15,10 @@ public class GuessNumberTest {
         String answer;
 
         do {
-            System.out.println("У каждого по 10 попыток");
+            System.out.println("У вас 10 попыток");
             guessNumber.guessNumber();
 
             do {
-                guessNumber.incrementTotal();
                 System.out.println("Хотите продолжить? [да/нет]:");
                 answer = scanner.nextLine();
             } while (!answer.equals("да") && !answer.equals("нет"));
