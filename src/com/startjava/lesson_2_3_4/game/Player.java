@@ -4,18 +4,10 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private int numbersEntered;
+    private int number;
     private int numberOfAttempts = 0;
     private boolean isWin = false;
     private int[] attempts = new int[10];
-
-    public int[] getAttempts() {
-        return Arrays.copyOf(attempts, attempts.length + 1);
-    }
-
-    public void setAttempts(int number) {
-        this.attempts[numberOfAttempts] = number;
-    }
 
     public boolean getIsWin() {
         return isWin;
@@ -45,11 +37,24 @@ public class Player {
         return name;
     }
 
-    public int getNumbersEntered() {
-        return numbersEntered;
+    public int getNumber() {
+        return number;
     }
 
-    public void setNumbersEntered(int numbersEntered) {
-        this.numbersEntered = numbersEntered;
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int[] getAttempt() {
+//        System.out.println("Массив " + Arrays.toString(attempts));
+////        Arrays.fill(attempts, 0, 5, 1);
+        System.out.println("Массив " + Arrays.toString(attempts));
+
+//        return Arrays.copyOf(attempts, attempts.length + 1);
+        return attempts = Arrays.copyOf(attempts, attempts.length + 1);
+    }
+
+    public void setAttempt(int number) {
+        this.attempts[numberOfAttempts] = number;
     }
 }
