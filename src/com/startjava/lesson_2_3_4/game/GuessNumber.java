@@ -7,6 +7,8 @@ class GuessNumber {
     private Player player1;
     private Player player2;
 
+
+
     private int randomNumber;
     private Scanner scanner = new Scanner(System.in);
 
@@ -16,6 +18,8 @@ class GuessNumber {
     }
 
     void guessNumber() {
+
+
         randomNumber = (int) (Math.random() * 101);
         System.out.println(randomNumber); //Случ число
         init();
@@ -37,14 +41,15 @@ class GuessNumber {
 
     private void init () {
 
-//        System.out.println("Массив2 до очистки " + Arrays.toString(player1.getAttempt()));
-//        System.out.println("Массив2 до очистки " + Arrays.toString(player2.getAttempt()));
+        System.out.println("Массив2 до очистки " + Arrays.toString(player1.getAttempt()));
+        System.out.println("Массив2 до очистки " + Arrays.toString(player2.getAttempt()));
 //
 //        Arrays.fill(player1.getAttempt(), 0, player1.getNumberOfAttempts(), 1);
 //
 //        Arrays.fill(player2.getAttempt(), 0, 5, 1);
 //
-//
+////
+////
 //        System.out.println("Массив2 после очистки " + Arrays.toString(player1.getAttempt()));
 //        System.out.println("Массив2 после очистки " + Arrays.toString(player2.getAttempt()));
 

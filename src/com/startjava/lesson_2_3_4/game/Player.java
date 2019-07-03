@@ -8,6 +8,7 @@ public class Player {
     private int numberOfAttempts = 0;
     private boolean isWin = false;
     private int[] attempts = new int[10];
+//    private int[] attempts2 = new int[0];
 
     public boolean getIsWin() {
         return isWin;
@@ -46,15 +47,22 @@ public class Player {
     }
 
     public int[] getAttempt() {
-//        System.out.println("Массив " + Arrays.toString(attempts));
-////        Arrays.fill(attempts, 0, 5, 1);
+        System.out.println("Массив " + Arrays.toString(attempts));
+        Arrays.fill(attempts, 0, numberOfAttempts,1);
         System.out.println("Массив " + Arrays.toString(attempts));
 
 //        return Arrays.copyOf(attempts, attempts.length + 1);
-        return attempts = Arrays.copyOf(attempts, attempts.length + 1);
+        attempts[numberOfAttempts] = number;
+        System.out.println("Навзванная игроком: " + Arrays.toString(attempts));
+        System.out.println("[] " + attempts[numberOfAttempts]);
+        return Arrays.copyOf(attempts, attempts.length + 1);
+
     }
 
     public void setAttempt(int number) {
         this.attempts[numberOfAttempts] = number;
     }
 }
+//[0][0][0][1][0][0]
+//[0][0][0][0][0][0]
+
