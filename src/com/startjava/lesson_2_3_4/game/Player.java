@@ -6,8 +6,12 @@ public class Player {
     private String name;
     private int number;
     private int numberOfAttempts = 0;
-    private boolean isWin = false;
+    private boolean isWin;
     private int[] attempts = new int[10];
+
+    public Player(String name) {
+        this.name = name;
+    }
 
     public boolean getIsWin() {
         return isWin;
@@ -22,11 +26,7 @@ public class Player {
     }
 
     public void setNumberOfAttempts(int numberOfAttempts) {
-        this.numberOfAttempts = numberOfAttempts;
-    }
-
-    public Player(String name) {
-        this.name = name;
+        this.attempts[numberOfAttempts] = number;
     }
 
     public void setName(String name) {
@@ -45,12 +45,13 @@ public class Player {
         this.number = number;
     }
 
-    public int[] getAttempt() {
-        return Arrays.copyOfRange(attempts, 0,  numberOfAttempts + 1);
+    public int[] getAttempts() {
+        return Arrays.copyOf(attempts, numberOfAttempts);
     }
 
-    public void setAttempt(int number) {
-        this.attempts[numberOfAttempts] = number;
+    public void setAttempts(int number) {
+
+        attempts[numberOfAttempts] = number;
     }
 }
 

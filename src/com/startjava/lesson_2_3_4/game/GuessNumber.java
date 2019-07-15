@@ -15,9 +15,8 @@ class GuessNumber {
     }
 
     void guessNumber() {
-        randomNumber = (int) (Math.random() * 101);
-        System.out.println(randomNumber); //Случ число
         init();
+        System.out.println(randomNumber); //Случ число
 
         while (!player1.getIsWin() && !player2.getIsWin()) {
             playerInput(player1, randomNumber);
@@ -30,26 +29,18 @@ class GuessNumber {
                 break;
             }
         }
-        System.out.println(player1.getName() + " Ввел: " + outputArrayWithNumbers(player1.getNumberOfAttempts(), player1.getAttempt()));
-        System.out.println(player2.getName() + " Ввел: " + outputArrayWithNumbers(player2.getNumberOfAttempts(), player2.getAttempt()));
+        System.out.println(player1.getName() + " Ввел: " + outputArrayWithNumbers(player1.getNumberOfAttempts(), player1.getAttempts()));
+        System.out.println(player2.getName() + " Ввел: " + outputArrayWithNumbers(player2.getNumberOfAttempts(), player2.getAttempts()));
     }
 
-    private void init () {
-        Arrays.fill(player1.getAttempt(), 0, player1.getNumberOfAttempts(), 1);
-        Arrays.fill(player2.getAttempt(), 0, player2.getNumberOfAttempts(), 1);
+    private void init() {
+        randomNumber = (int) (Math.random() * 101);
+        Arrays.fill(player1.getAttempts(), 0, player1.getNumberOfAttempts(), 1);
+        Arrays.fill(player2.getAttempts(), 0, player2.getNumberOfAttempts(), 1);
         player1.setNumberOfAttempts(0);
         player2.setNumberOfAttempts(0);
         player1.setIsWin(false);
         player2.setIsWin(false);
-    }
-
-    private String outputArrayWithNumbers(int attempt, int[] arrayOfInputNumbers) {
-        StringBuilder res = new StringBuilder();
-
-        for (int i = 0; i < attempt; i++) {
-            res.append(arrayOfInputNumbers[i]).append(" ");
-        }
-        return res.toString();
     }
 
     private void playerInput(Player player, int randomNumber) {
@@ -61,23 +52,34 @@ class GuessNumber {
         player.setNumber(scanner.nextInt());
 
         if (player.getNumber() == randomNumber) {
-            player.setAttempt(player.getNumber());
+            player.setAttempts(player.getNumber());
             player.setIsWin(true);
             conclusionWinPlayer(player);
             player.setNumberOfAttempts(player.getNumberOfAttempts() + 1);
         } else {
-            player.setAttempt(player.getNumber());
+            player.setAttempts(player.getNumber());
             System.out.println(player.getName() + " не угадал, осталось попыток: " + (9 - player.getNumberOfAttempts()));
             System.out.println(" ");
             player.setNumberOfAttempts(player.getNumberOfAttempts() + 1);
         }
     }
 
-    private void conclusionWinPlayer (Player player) {
+    private void conclusionWinPlayer(Player player) {
         if (player.getIsWin()) {
+            System.out.println("Количество попыток: " + player.getNumberOfAttempts());  //!!! Как паолучить теперь это значение ? В этом классе ?
+            System.out.println("Попытки: " + Arrays.toString(player.getAttempts()));    //!!! Как паолучить теперь это значение ? В этом классе ?
             System.out.println("Игрок " + player.getName() + " угадал число " +
-                    player.getAttempt()[player.getNumberOfAttempts()] + " с " + (player.getNumberOfAttempts() + 1) + " попытки");
+                    player.getNumber() + " с " + (player.getNumberOfAttempts() + 1) + " попытки");
         }
+    }
+
+    private String outputArrayWithNumbers(int attempt, int[] arrayOfInputNumbers) {
+        StringBuilder res = new StringBuilder();
+
+        for (int i = 0; i < attempt; i++) {
+            res.append(arrayOfInputNumbers[i]).append(" ");
+        }
+        return res.toString();
     }
 }
 
