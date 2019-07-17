@@ -15,6 +15,8 @@ class GuessNumber {
     }
 
     void guessNumber() {
+        player1.resetNumbers();
+        player2.resetNumbers();
         init();
         System.out.println(randomNumber); //Случ число
 
@@ -45,10 +47,10 @@ class GuessNumber {
         System.out.print(player.getName() + " вводит значение: ");
         player.setNumber(scanner.nextInt());
         player.setAttempts(player.getNumber());
-        determineWinner(player, randomNumber);
+        determineWinner(player);
     }
 
-    private void determineWinner(Player player, int randomNumber) {
+    private void determineWinner(Player player) {
         if (player.getNumber() == randomNumber) {
             player.setAttempts(player.getNumber());
             player.setIsWin(true);
@@ -80,4 +82,3 @@ class GuessNumber {
         return res.toString();
     }
 }
-
