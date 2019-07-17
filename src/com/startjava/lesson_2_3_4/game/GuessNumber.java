@@ -19,38 +19,36 @@ class GuessNumber {
         System.out.println(randomNumber); //Случ число
 
         while (!player1.getIsWin() && !player2.getIsWin()) {
-            playerInput(player1, randomNumber);
+            inputNumber(player1);
 
             if (!player1.getIsWin()) {
-                playerInput(player2, randomNumber);
+                inputNumber(player2);
             }
             if (player1.getNumberOfAttempts() + player2.getNumberOfAttempts() == 20) {
                 System.out.println("У вас закончились попытки");
                 break;
             }
         }
-        System.out.println(player1.getName() + " Ввел: " + outputArrayWithNumbers(player1.getNumberOfAttempts(), player1.getAttempts()));
-        System.out.println(player2.getName() + " Ввел: " + outputArrayWithNumbers(player2.getNumberOfAttempts(), player2.getAttempts()));
+        System.out.println(player1.getName() + " Ввел: " + showAttempts(player1.getNumberOfAttempts(), player1.getAttempts()));
+        System.out.println(player2.getName() + " Ввел: " + showAttempts(player2.getNumberOfAttempts(), player2.getAttempts()));
     }
 
     private void init() {
         randomNumber = (int) (Math.random() * 101);
-        Arrays.fill(player1.getAttempts(), 0, player1.getNumberOfAttempts(), 1);
-        Arrays.fill(player2.getAttempts(), 0, player2.getNumberOfAttempts(), 1);
         player1.setNumberOfAttempts(0);
         player2.setNumberOfAttempts(0);
         player1.setIsWin(false);
         player2.setIsWin(false);
     }
 
-    private void playerInput(Player player, int randomNumber) {
+    private void inputNumber(Player player) {
         System.out.print(player.getName() + " вводит значение: ");
+        player.setNumber(scanner.nextInt());
+        player.setAttempts(player.getNumber());
         determineWinner(player, randomNumber);
     }
 
     private void determineWinner(Player player, int randomNumber) {
-        player.setNumber(scanner.nextInt());
-
         if (player.getNumber() == randomNumber) {
             player.setAttempts(player.getNumber());
             player.setIsWin(true);
@@ -73,7 +71,7 @@ class GuessNumber {
         }
     }
 
-    private String outputArrayWithNumbers(int attempt, int[] arrayOfInputNumbers) {
+    private String showAttempts(int attempt, int[] arrayOfInputNumbers) {
         StringBuilder res = new StringBuilder();
 
         for (int i = 0; i < attempt; i++) {
