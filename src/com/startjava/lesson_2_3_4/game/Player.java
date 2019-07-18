@@ -45,7 +45,7 @@ public class Player {
         attempts[incAttempt] = number;
     }
     public void resetNumbers() {
-        Arrays.fill(attempts, 0, incAttempt, 1);
+        Arrays.fill(attempts, 0, incAttempt, 0);
     }
 }
 
