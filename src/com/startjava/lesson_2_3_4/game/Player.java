@@ -5,12 +5,20 @@ import java.util.Arrays;
 public class Player {
     private String name;
     private int number;
-    public int attempt;
+    private int attempt;
     private boolean isWin;
     private int[] attempts = new int[10];
 
     public Player(String name) {
         this.name = name;
+    }
+
+    public int getAttempt() {
+        return attempt;
+    }
+
+    public void setAttempt(int attempt) {
+        this.attempt = attempt;
     }
 
     public boolean getIsWin() {
