@@ -16,13 +16,12 @@ public class GuessNumberTest {
 
         do {
             System.out.println("У вас 10 попыток");
-            guessNumber.guessNumber();
+            guessNumber.startGame();
 
             do {
                 System.out.println("Хотите продолжить? [да/нет]:");
                 answer = scanner.nextLine();
             } while (!answer.equals("да") && !answer.equals("нет"));
-
         } while (answer.equals("да"));
     }
 }
