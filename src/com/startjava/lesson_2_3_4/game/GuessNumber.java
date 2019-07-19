@@ -13,17 +13,17 @@ class GuessNumber {
         this.player2 = player2;
     }
 
-    void guessNumber() {
+    void startGame() {
         init();
         System.out.println(randomNumber); //Случ число
-
+        int incAttempt = 0;
         while (!player1.getIsWin() && !player2.getIsWin()) {
+            incAttempt++;
             inputNumber(player1);
-
             if (!player1.getIsWin()) {
                 inputNumber(player2);
             }
-            if (player1.incAttempt + player2.incAttempt == 20) {
+            if (incAttempt == 10) {
                 System.out.println("У вас закончились попытки");
                 break;
             }
@@ -36,8 +36,8 @@ class GuessNumber {
         player1.resetNumbers();
         player2.resetNumbers();
         randomNumber = (int) (Math.random() * 101);
-        player1.incAttempt = 0;
-        player2.incAttempt = 0;
+        player1.attempt = 0;
+        player2.attempt = 0;
         player1.setIsWin(false);
         player2.setIsWin(false);
     }
@@ -53,26 +53,26 @@ class GuessNumber {
         if (player.getNumber() == randomNumber) {
             player.setIsWin(true);
             conclusionWinPlayer(player);
-            player.incAttempt++;
+            player.attempt++;
         } else {
             player.setAttempts(player.getNumber());
-            System.out.println(player.getName() + " не угадал, осталось попыток: " + (9 - player.incAttempt));
+            System.out.println(player.getName() + " не угадал, осталось попыток: " + (9 - player.attempt));
             System.out.println(" ");
-            player.incAttempt++;
+            player.attempt++;
         }
     }
 
     private void conclusionWinPlayer(Player player) {
         if (player.getIsWin()) {
             System.out.println("Игрок " + player.getName() + " угадал число " +
-                    player.getNumber() + " с " + (player.incAttempt + 1) + " попытки");
+                    player.getNumber() + " с " + (player.attempt + 1) + " попытки");
         }
     }
 
     private String showAttempts(Player player) {
         StringBuilder res = new StringBuilder();
 
-        for (int i = 0; i < player.incAttempt; i++) {
+        for (int i = 0; i < player.attempt; i++) {
             res.append(player.getAttempts()[i]).append(" ");
         }
         return res.toString();
