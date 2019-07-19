@@ -13,7 +13,7 @@ class GuessNumber {
         this.player2 = player2;
     }
 
-    void startGame() {
+   public void startGame() {
         init();
         System.out.println(randomNumber); //Случ число
         int incAttempt = 0;
