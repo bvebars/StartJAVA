@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Player {
     private String name;
     private int number;
-    public int incAttempt;
+    public int attempt;
     private boolean isWin;
     private int[] attempts = new int[10];
 
@@ -38,14 +38,15 @@ public class Player {
     }
 
     public int[] getAttempts() {
-        return Arrays.copyOf(attempts, incAttempt);
+        return Arrays.copyOf(attempts, attempt);
     }
 
     public void setAttempts(int number) {
-        attempts[incAttempt] = number;
+        attempts[attempt] = number;
     }
     public void resetNumbers() {
-        Arrays.fill(attempts, 0, incAttempt, 0);
+        Arrays.fill(attempts, 0, attempt, 0);
     }
+
 }
 
